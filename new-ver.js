@@ -1,8 +1,8 @@
 function handler(event) {
-    var request = event.Records[0].cf.request;
+    var request = event.request;
     var uri = request.uri;
 
-    // 如果請求的路徑已經是 /index.html 或以 /assets/ 開頭，則不進行導向
+    // If the requested path is already /index.html or starts with /assets/, no redirection is performed
     if (uri === '/index.html' || uri.indexOf('/assets/') === 0) {
         return request;
     }
@@ -20,4 +20,3 @@ function handler(event) {
     return response;
 }
 
-exports.handler = handler;
